@@ -64,9 +64,4 @@ numpad 方法接收一个对象作为参数，该参数包含了 `digit`、`bord
 | border | 模拟input是否需要边框 | false |true、或者 "1px solid red"  |
 | callback | 每次输入回调 | 空函数 | 包含参数 value、isNumber |
 
-
-<<<<<<< HEAD
-numpad演示：[demo](http://joy-yi0905.github.io/numpad/demo/demo.html)
-=======
 numpad演示：[demo](http://joy-yi0905.github.io/numpad/demo/index.html)
->>>>>>> gh-pages
