@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>numpad-demo</title>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "PingFang SC",PingHei,"HanHei SC",STHeitiSC-Light,"Hiragino Sans GB",STHeiti,Roboto,Noto,"Helvetica Neue",Helvetica,Arial,SimSun,sans-serif;
+  background: #f3f4f6;
+}
+::-webkit-input-placeholder {
+  color: #aaa;
+}
+::-moz-placeholder {
+  color: #aaa;
+}
+.input-box {
+  position: relative;
+  border: 1px solid #d2d4d9;
+  margin: 10px;
+  padding: 5px;
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.input-number,
+.input-number03 {
+  width: 100%;
+  font-size: 18px;
+  line-height: 30px;
+  outline: none;
+  border: none;
+  padding: 0;
+}
+.button {
+  display: block;
+  margin: 15px 5%;
+  text-align: center;
+  color: #fff;
+  line-height: 2.815;
+  text-decoration: none;
+  background: #e33b26;
+  border-radius: 3px;
+}
+.button:active {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.button.disabled {
+  opacity: 0.5;
+}
+.button.button-add-content {
+  display: inline-block;
+  margin: 10px;
+  padding: 1px 3px;
+  line-height: 2;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+p {
+  padding-left: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="placeholder"></div>
+
+  <div>
+    <div class="input-box">
+      <input type="text" placeholder="type number" class="input-number input-number01" />
+    </div>
+
+    <div class="input-box">
+      <input type="text" placeholder="type number, digit 2(default)" class="input-number input-number02" />
+    </div>
+
+    <div class="input-box">
+      <input type="text" placeholder="type number, digit 3, related button" class="input-number03" />
+    </div>
+  </div>
+
+  <input type="text" placeholder="type number, digit 5" class="input-number-other" />
+
+  <a href="javascript:;" class="button button-confirm disabled">confirm</a>
+
+  <a href="javascript:;" class="button button-add-content">Click add some content, the numpad will adjust position auto</a>
+
+</div>
+
+<script>
+
+window.onload = function() {
+  $('.button-add-content').on('click', function() {
+    $('<p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p>').appendTo('.placeholder');
+  });
+
+  // invoking
+  $('.input-number').numpad();
+
+  $('.input-number03').numpad({
+    digit: 3,
+    callback: function(value, isNumber) {
+      console.log(value, isNumber);
+      isNumber ? $('.button-confirm').removeClass('disabled') : $('.button-confirm').addClass('disabled');
+    }
+  });
+
+  $('.input-number-other').numpad({
+    digit: 5,
+    border: '1px solid red',
+    callback: function(value) {
+      console.log(value);
+    }
+  });
+};
+
+</script>
+</body>
+
+</html>
