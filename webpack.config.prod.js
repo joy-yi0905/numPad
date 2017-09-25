@@ -7,11 +7,13 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/res/js/zepto.numpad.js'),
+  entry: {
+    zepto: ['n-zepto'],
+    ['zepto.numpad']: path.resolve(__dirname, './src/res/js/zepto.numpad.js'),
+  },
   output: {
     path: path.resolve(__dirname, './demo'),
-    filename: 'zepto.numpad.min.js',
-    publicPath: ''
+    filename: '[name].min.js'
   },
 
   module: {

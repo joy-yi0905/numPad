@@ -1,9 +1,5 @@
 import './../css/zepto.numpad.less';
 
-import $ from 'n-zepto';
-
-window.$ = window.Zepto = $;
-
 ;(function($){
   let pad = {
     id: '',
@@ -11,6 +7,14 @@ window.$ = window.Zepto = $;
     inputNumpadEleClass: '.input-numpad-container',
     numpadEleClass: '.numpad'
   };
+
+  let defaults = {
+    digit: 2,
+    border: false,
+    callback: () => {}
+  };
+
+  let eventType = ('ontouchstart' in window) ? 'touchstart' : 'click';
 
   function inputIsNumber(value) {
     // filter number format:
@@ -65,7 +69,7 @@ window.$ = window.Zepto = $;
     return numpadEle;
   }
 
-  function Numpad(input, defaults = {digit: 2, border: false, callback: () => {}}, options) {
+  function Numpad(input, options) {
     this.input = input;
     this.opts = $.extend({}, defaults, options);
 
@@ -126,12 +130,12 @@ window.$ = window.Zepto = $;
         numpadEle.addClass('in transition');
         inputFocus.focus();
 
-        $(document).on('click', function() {
+        $(document).on(eventType, function() {
           env.hideNumpad(input);
         });
       }, 10);
 
-      numpadEle.on('click', () => {
+      numpadEle.on(eventType, () => {
         return false;
       });
 
@@ -139,7 +143,7 @@ window.$ = window.Zepto = $;
 
       numpadItem.off();
 
-      numpadItem.on('click', function() {
+      numpadItem.on(eventType, function() {
         inputFocus.focus();
         env.inputNumber(inputNumpadVal, $(this), env);
       });
@@ -217,13 +221,14 @@ window.$ = window.Zepto = $;
         'height': input.height(),
         'overflow-x': 'auto',
         'border': border,
+        'color': input.css('color'),
         'font-family': input.css('font-family'),
         'font-size': input.css('font-size'),
         'line-height': input.height() + 'px',
         'box-sizing': 'border-box'
       })
       .appendTo(inputParent)
-      .on('click', function() {
+      .on(eventType, function() {
         return false;
       });
 
@@ -251,6 +256,8 @@ window.$ = window.Zepto = $;
 
       inputNumpadVal = inputNumpadText.find('span');
 
+      inputNumpadVal.css('display', 'inline-block');
+
       return {
         inputNumpadContainer,
         inputNumpadVal,
@@ -260,9 +267,12 @@ window.$ = window.Zepto = $;
   });
 
   $.fn.numpad = function(options) {
-    $(this).attr('readonly', 'readonly');
+    $(this).attr({
+      // 'disabled': 'disabled',
+      'readonly': 'readonly'
+    });
 
-    return $(this).on('click', function() {
+    return $(this).on(eventType, function() {
       new Numpad($(this), options);
 
       return false;

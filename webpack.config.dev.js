@@ -1,14 +1,19 @@
 var path = require('path');
 
+var webpack = require('webpack');
+
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/res/js/zepto.numpad.js'),
+  entry: {
+    zepto: ['n-zepto'],
+    ['zepto.numpad']: path.resolve(__dirname, './src/res/js/zepto.numpad.js')
+  },
   output: {
     path: path.resolve(__dirname, './demo'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name].min.js'
   },
 
   devServer: {
@@ -61,8 +66,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: __dirname + '/src/demo.html',
-      inject: 'body'
+      inject: 'head'
     }),
-    new ExtractTextPlugin('css/style.[chunkhash].css')
+    new ExtractTextPlugin('css/style.[chunkhash].css'),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['zepto']
+    })
   ]
 };
