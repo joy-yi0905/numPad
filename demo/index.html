@@ -66,7 +66,7 @@ p {
   padding-left: 10px;
 }
 </style>
-<link href="zepto.numpad.min.css" rel="stylesheet"></head>
+<link href="zepto.numpad.min.css" rel="stylesheet"><script type="text/javascript" src="zepto.min.js"></script><script type="text/javascript" src="zepto.numpad.min.js"></script></head>
 
 <body>
 
@@ -98,32 +98,32 @@ p {
 
 <script>
 
-window.onload = function() {
-  $('.button-add-content').on('click', function() {
-    $('<p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p>').appendTo('.placeholder');
-  });
 
-  // invoking
-  $('.input-number').numpad();
+$('.button-add-content').on('click', function() {
+  $('<p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p><p>The numpad will not be covered</p>').appendTo('.placeholder');
+});
 
-  $('.input-number03').numpad({
-    digit: 3,
-    callback: function(value, isNumber) {
-      console.log(value, isNumber);
-      isNumber ? $('.button-confirm').removeClass('disabled') : $('.button-confirm').addClass('disabled');
-    }
-  });
+// invoking
+$('.input-number').numpad();
 
-  $('.input-number-other').numpad({
-    digit: 5,
-    border: '1px solid red',
-    callback: function(value) {
-      console.log(value);
-    }
-  });
-};
+$('.input-number03').numpad({
+  digit: 3,
+  callback: function(value, isNumber) {
+    console.log(value, isNumber);
+    isNumber ? $('.button-confirm').removeClass('disabled') : $('.button-confirm').addClass('disabled');
+  }
+});
+
+$('.input-number-other').numpad({
+  digit: 5,
+  border: '1px solid red',
+  callback: function(value) {
+    console.log(value);
+  }
+});
+
 
 </script>
-<script type="text/javascript" src="zepto.min.js"></script><script type="text/javascript" src="zepto.numpad.min.js"></script></body>
+</body>
 
 </html>

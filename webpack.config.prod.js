@@ -61,7 +61,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: __dirname + '/src/demo.html',
-      inject: 'body'
+      inject: 'head'
     }),
     new ExtractTextPlugin('zepto.numpad.min.css'),
     new CleanWebpackPlugin(

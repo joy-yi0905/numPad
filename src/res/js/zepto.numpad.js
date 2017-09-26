@@ -115,7 +115,6 @@ import './../css/zepto.numpad.less';
       inputNumpadVal.html(inputVal || '');
 
       input.attr({
-        'data-type': 'number',
         'data-id': padId
       });
 
@@ -203,7 +202,7 @@ import './../css/zepto.numpad.less';
 
       let inputNumpadContainer = $('<div class="input-numpad-container"/>'),
         inputNumpadText = $('<div class="input-numpad-text"/>'),
-        inputFocus = $('<input class="input-focus" type="text" readonly>'),
+        inputFocus = $('<input class="input-focus" type="text" data-type="number" readonly>'),
         inputNumpadVal;
 
       if (typeof border === 'boolean') {
@@ -269,6 +268,7 @@ import './../css/zepto.numpad.less';
   $.fn.numpad = function(options) {
     $(this).attr({
       // 'disabled': 'disabled',
+      'data-type': 'number',
       'readonly': 'readonly'
     });
 

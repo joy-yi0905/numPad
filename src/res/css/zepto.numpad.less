@@ -136,10 +136,24 @@
   }
 }
 
-input {
+input[data-type="number"] {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: none;
+
   box-sizing: border-box;
 
-  &[data-type="number"].hidden {
+  &:focus {
+    border: none;
+    outline: none;
+  }
+
+  &.hidden {
     opacity: 0;
   }
 }
