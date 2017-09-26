@@ -211,19 +211,18 @@ import './../css/zepto.numpad.less';
 
       inputNumpadContainer
       .css({
-        'display': 'flex',
-        'display': '-webkit-flex',
         'position': 'absolute',
-        'left': inputPos.left,
-        'top': inputPos.top,
+        'left': inputPos.left + input.css('margin-left').replace(/px/, '')/1,
+        'top': inputPos.top + input.css('margin-top').replace(/px/, '')/1,
         'width': input.width(),
         'height': input.height(),
+        'padding': input.css('padding'),
         'overflow-x': 'auto',
         'border': border,
         'color': input.css('color'),
         'font-family': input.css('font-family'),
         'font-size': input.css('font-size'),
-        'line-height': input.height() + 'px',
+        'line-height': input.css('line-height'),
         'box-sizing': 'border-box'
       })
       .appendTo(inputParent)
