@@ -1,4 +1,4 @@
-# numpad
+# numPad
 
 一款基于zepto的数字键盘，主要应用于移动端。
 
@@ -8,6 +8,10 @@
 - 当输数大于最大宽度时，总是显示最新输入的内容
 
 当输入框在页面底部时，不会被numpad遮挡。
+
+注意：输入框的类型必须是 `type="number"`，如果你设置的是 `type="number"`，当输入非数字，比如 `.` ，则再次输入时，因为输入框的默认限制，内容会被清空。
+
+numpad演示：[demo](http://joy-yi0905.github.io/numPad/demo/index.html)
 
 ### 如何使用
 
@@ -21,7 +25,7 @@
 
 ```html
 <script src="src/zepto.min.js"></script>
-<script src="src/zepto.numpad.js"></script>
+<script src="src/zepto.numpad.min.js"></script>
 ```
 
 - 最后在页面里，为需要的 `<input>` 元素添加方法。 相关示例代码：
@@ -64,4 +68,3 @@ numpad 方法接收一个对象作为参数，该参数包含了 `digit`、`bord
 | border | 模拟input是否需要边框 | false |true、或者 "1px solid red"  |
 | callback | 每次输入回调 | 空函数 | 包含参数 value、isNumber |
 
-numpad演示：[demo](http://joy-yi0905.github.io/numpad/demo/index.html)
