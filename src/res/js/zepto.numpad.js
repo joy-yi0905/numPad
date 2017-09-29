@@ -8,12 +8,6 @@ import './../css/zepto.numpad.less';
     numpadEleClass: '.numpad'
   };
 
-  let defaults = {
-    digit: 2,
-    border: false,
-    callback: () => {}
-  };
-
   let eventType = ('ontouchstart' in window) ? 'touchstart' : 'click';
 
   function inputIsNumber(value) {
@@ -69,7 +63,15 @@ import './../css/zepto.numpad.less';
     return numpadEle;
   }
 
-  function Numpad(input, options) {
+  function Numpad(
+    input,
+    options,
+    defaults = {
+      digit: 2,
+      border: false,
+      callback: () => {}
+    }) {
+
     this.input = input;
     this.opts = $.extend({}, defaults, options);
 
@@ -77,7 +79,7 @@ import './../css/zepto.numpad.less';
   }
 
   $.extend(Numpad.prototype, {
-    showNumPad: (env) => {
+    showNumPad: (env) => { console.log(env);
       let padId = new Date()/1;
 
       let isSwitchInput = false;

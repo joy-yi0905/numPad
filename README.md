@@ -45,10 +45,10 @@ $('.input').numpad({
   digit: 3,
   callback: function(value, isNumber) {
     if (isNumber) {
-	  console.log(value);
-	} else {
-	  console.log('input value is not number');
-	}
+      console.log(value);
+    } else {
+      console.log('input value is not number');
+    }
   }
 });
 ```
