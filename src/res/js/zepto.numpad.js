@@ -1,6 +1,6 @@
 import './../css/zepto.numpad.less';
 
-;(function($){
+;(function($) {
   let pad = {
     id: '',
     display: false,
@@ -147,6 +147,12 @@ import './../css/zepto.numpad.less';
       numpadItem.on(eventType, function() {
         inputFocus.focus();
         env.inputNumber(inputNumpadVal, $(this), env);
+
+        $(this).addClass(('ontouchstart' in window) ? 'active' : '');
+      });
+
+      numpadItem.on('touchend', function() {
+        numpadItem.removeClass('active');
       });
     },
 
