@@ -112,7 +112,7 @@ import './../css/zepto.numpad.less';
 
       inputEle = env.createInputEle(input, env.opts.border);
 
-      let {inputNumpadVal, inputFocus} = inputEle;
+      let {inputNumpadContainer, inputNumpadVal, inputFocus} = inputEle;
 
       inputNumpadVal.html(inputVal || '');
 
@@ -145,10 +145,14 @@ import './../css/zepto.numpad.less';
       numpadItem.off();
 
       numpadItem.on(eventType, function() {
-        inputFocus.focus();
+        inputFocus.blur();
         env.inputNumber(inputNumpadVal, $(this), env);
 
         $(this).addClass(('ontouchstart' in window) ? 'active' : '');
+
+        setTimeout(() => {
+          inputFocus.focus();
+        }, 0);
       });
 
       numpadItem.on('touchend', function() {
@@ -226,6 +230,7 @@ import './../css/zepto.numpad.less';
         'height': input.height(),
         'padding': input.css('padding'),
         'overflow-x': 'auto',
+        'overflow-y': 'hidden',
         'border': border,
         'color': input.css('color'),
         'font-family': input.css('font-family'),
@@ -252,7 +257,7 @@ import './../css/zepto.numpad.less';
       inputFocus
       .css({
         'position': 'absolute',
-        'right': '-15px',
+        'right': '-5px',
         'width': 0,
         'height': 0,
         'opacity': '0',
