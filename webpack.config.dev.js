@@ -65,7 +65,6 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      filename: './demo.html',
       template: __dirname + '/src/demo.html',
       inject: 'head'
     }),
