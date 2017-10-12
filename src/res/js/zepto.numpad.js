@@ -32,10 +32,10 @@ import './../css/zepto.numpad.less';
 
   function eleIsView(ele) {
     let screenH = $(window).height();
-    let numpadH = 200;
+    let coverH = 200;
     let eleBottom = ele.get(0).getBoundingClientRect().bottom;
 
-    return !(screenH - eleBottom < numpadH + 10);
+    return !(screenH - eleBottom < coverH + 10);
   }
 
   function createNumpad() {
@@ -116,16 +116,14 @@ import './../css/zepto.numpad.less';
 
       inputNumpadVal.html(inputVal || '');
 
-      input.attr({
-        'data-id': padId
-      });
+      input.data('id', padId);
 
       if (inputVal !== '') input.addClass('hidden');
 
       numpadEle
       .removeClass('top bottom')
       .addClass(!eleIsView(input) ? 'top' : 'bottom')
-      .attr('data-id', pad.id);
+      .data('id', pad.id);
 
       setTimeout(() => {
         numpadEle.addClass('in transition');
@@ -277,9 +275,8 @@ import './../css/zepto.numpad.less';
     }
   });
 
-  $.fn.numpad = function(options) {
+  $.fn.numPad = function(options) {
     $(this).attr({
-      // 'disabled': 'disabled',
       'data-type': 'number',
       'readonly': 'readonly'
     });
