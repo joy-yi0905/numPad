@@ -75,19 +75,19 @@ p {
 
   <div>
     <div class="input-box">
-      <input type="text" placeholder="type number" class="input-number input-number01" />
+      <input type="text" placeholder="fill number" class="input-number input-number01" />
     </div>
 
     <div class="input-box">
-      <input type="text" placeholder="type number, digit 2(default)" class="input-number input-number02" />
+      <input type="text" placeholder="fill number, digit 2(default)" class="input-number input-number02" />
     </div>
 
     <div class="input-box">
-      <input type="text" placeholder="type number, digit 3, related button" class="input-number03" />
+      <input type="text" placeholder="fill number, digit 3, related button" class="input-number03" />
     </div>
   </div>
 
-  <input type="text" placeholder="type number, digit 5" class="input-number-other" />
+  <input type="text" placeholder="fill number, digit 5" class="input-number-other" />
 
   <a href="javascript:;" class="button button-confirm disabled">confirm</a>
 
@@ -103,9 +103,9 @@ $('.button-add-content').on('click', function() {
 });
 
 // invoking
-$('.input-number').numpad();
+$('.input-number').numPad();
 
-$('.input-number03').numpad({
+$('.input-number03').numPad({
   digit: 3,
   callback: function(value, isNumber) {
     console.log(value, isNumber);
@@ -113,7 +113,7 @@ $('.input-number03').numpad({
   }
 });
 
-$('.input-number-other').numpad({
+$('.input-number-other').numPad({
   digit: 5,
   border: '1px solid red',
   callback: function(value) {

@@ -11,7 +11,7 @@
 
 注意：输入框的类型必须是 `type="text"`。 如果你设置的是 `type="number"`，当输入非数字，比如 `.` ，则再次输入时，基于输入框类型的默认限制，内容会被清空。
 
-numPad演示：**[demo](http://joy-yi0905.github.io/numPad/demo/index.html)**
+numPad演示：**[demo](http://joy-yi0905.github.io/numPad/demo/demo.html)**
 
 ### 如何使用
 
