@@ -79,12 +79,14 @@ import './../css/zepto.numpad.less';
   }
 
   $.extend(Numpad.prototype, {
-    showNumPad: (env) => { console.log(env);
+    showNumPad() {
+      let that = this;
+
       let padId = new Date()/1;
 
       let isSwitchInput = false;
 
-      let input = env.input,
+      let input = that.input,
         inputVal = input.val(),
         inputId = input.data('id');
 
@@ -110,7 +112,7 @@ import './../css/zepto.numpad.less';
         numpadEle = createNumpad();
       }
 
-      inputEle = env.createInputEle(input, env.opts.border);
+      inputEle = that.createInputEle(input, that.opts.border);
 
       let {inputNumpadContainer, inputNumpadVal, inputFocus} = inputEle;
 
@@ -130,7 +132,7 @@ import './../css/zepto.numpad.less';
         inputFocus.focus();
 
         $(document).on(eventType, function() {
-          env.hideNumpad(input);
+          that.hideNumpad(input);
         });
       }, 10);
 
@@ -144,7 +146,7 @@ import './../css/zepto.numpad.less';
 
       numpadItem.on(eventType, function() {
         inputFocus.blur();
-        env.inputNumber(inputNumpadVal, $(this), env);
+        that.inputNumber(inputNumpadVal, $(this), that);
 
         $(this).addClass(('ontouchstart' in window) ? 'active' : '');
 
@@ -158,7 +160,7 @@ import './../css/zepto.numpad.less';
       });
     },
 
-    hideNumpad: (input) => {
+    hideNumpad(input) {
       input.removeClass('hidden');
       $(pad.numpadEleClass).removeClass('in');
       $(pad.inputNumpadEleClass).remove();
@@ -170,14 +172,14 @@ import './../css/zepto.numpad.less';
       }, 400);
     },
 
-    inputNumber: (inputNumpadText, numEle, env) => {
-      let input = env.input,
+    inputNumber(inputNumpadText, numEle) {
+      let input = this.input,
         inputVal = input.val();
 
       let num = numEle.html();
 
       if (num.length === 1) { // add number or symbol "."
-        if (inputVal.indexOf('.') !== -1 && inputVal.split('.')[1].length >= env.opts.digit) return;
+        if (inputVal.indexOf('.') !== -1 && inputVal.split('.')[1].length >= this.opts.digit) return;
 
         if (num === '.') {
           if (inputVal === '') {
@@ -202,10 +204,10 @@ import './../css/zepto.numpad.less';
 
       inputNumpadText.html(inputVal);
 
-      env.opts.callback(inputVal, inputIsNumber(inputVal));
+      this.opts.callback(inputVal, inputIsNumber(inputVal));
     },
 
-    createInputEle: (input, border) => {
+    createInputEle(input, border) {
       let inputParent = input.parent(),
         inputParentPosVal = inputParent.css('position'),
         inputPos = input.position();

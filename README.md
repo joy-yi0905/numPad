@@ -24,8 +24,8 @@ numPad演示：**[demo](http://joy-yi0905.github.io/numPad/demo/demo.html)**
 - 然后再引入 `zepto.min.js` 和 `zepto.numpad.min.js`（这些文件包含在demo目录）
 
 ```html
-<script src="src/zepto.min.js"></script>
-<script src="src/zepto.numpad.min.js"></script>
+<script src="zepto.min.js"></script>
+<script src="zepto.numpad.min.js"></script>
 ```
 
 - 最后，在页面里相应的 `<input>` 元素添加方法。 相关示例代码：
