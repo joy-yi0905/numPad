@@ -18,7 +18,7 @@ numPad演示：**[demo](http://joy-yi0905.github.io/numPad/demo/demo.html)**
 - 首先引入插件的样式文件 `zepto.numpad.min.css`
 
 ```html
-<link rel="stylesheet" href="src/zepto.numpad.min.css">
+<link rel="stylesheet" href="zepto.numpad.min.css">
 ```
 
 - 然后再引入 `zepto.min.js` 和 `zepto.numpad.min.js`（这些文件包含在demo目录）
